@@ -1,0 +1,22 @@
+# Для проверок caos-* нужен установленный плагин: https://github.com/hse-cs-ami/caos-clang-tidy
+# clang-tidy нужно запускать с аргументом --load (см. README плагина)
+# Если нет возможности установить плагин, замените "caos" на "readability" в названиях проверок и опций.
+# Отличия проверок от аналогичных из readability:
+# - caos-magic-numbers: "const int x" не является константой в C.
+# - caos-identifier-naming: В программах на C проверяется стиль тегов структур и объединений.
+Checks: >
+  -*,
+  caos-magic-numbers,
+  caos-identifier-naming
+CheckOptions:
+  caos-identifier-naming.ConstantCase: UPPER_CASE
+  caos-identifier-naming.EnumCase: CamelCase
+  caos-identifier-naming.FunctionCase: lower_case
+  caos-identifier-naming.MacroDefinitionCase: UPPER_CASE
+  caos-identifier-naming.MemberCase: lower_case
+  caos-identifier-naming.ParameterCase: lower_case
+  caos-identifier-naming.StructCase: CamelCase
+  caos-identifier-naming.TypedefCase: CamelCase
+  caos-identifier-naming.UnionCase: CamelCase
+  caos-identifier-naming.VariableCase: lower_case
+WarningsAsErrors: '*'
