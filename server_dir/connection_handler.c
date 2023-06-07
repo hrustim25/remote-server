@@ -80,9 +80,9 @@ void handle_worker(int connection_fd, int arg_cnt, char **cmd_args) {
                 }
             }
         }
-        status = kill(pid, SIGTERM);
-        waitpid(pid, NULL, 0);
         close(pipe_fds[1]);
+        // status = kill(pid, SIGTERM);
+        waitpid(pid, NULL, 0);
         exit(0);
     } else {
         close(pipe_fds[1]);
